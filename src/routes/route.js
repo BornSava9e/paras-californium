@@ -26,7 +26,7 @@ router.get('/test-me', function (req, res) {
     console.log(validator.uprCase("FunctionUp"));
     
     let month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-    console.log(_.chunk(month, 4))
+    console.log(load.chunk(month, 4))
 
     let num = [1,3,5,7,9,11,13,15,17,19]
     console.log(load.tail(num))
