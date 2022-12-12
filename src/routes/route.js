@@ -7,7 +7,7 @@ const load = require('lodash')
 const logger1 = require('../logger/logger')
 const util1 = require('../util/helper')
 const validator = require('../validator/formatter')
-
+const missNum = require("../../get-api/findnum")
 router.get('/test-me', function (req, res) {
     console.log("email from introduction module", intro.myEmail)
     intro.myFunction('Sabiha')
@@ -97,5 +97,16 @@ router.get('/test-you', function(req, res){
     console.log("I am here")
     res.send("very important text")
 })
+// sol1
+router.get('/sol1', function(req, res){
+    let arr = [1,2,3,5,6,7]
+    res.send(missNum.findMissingNumber(arr))
+})
+//sol2
+router.get('/sol2', function(req, res){
+    let arr2 = [33,34,35,37,38]
+    res.send(missNum.findMissingNumber(arr2))
+})
+
 
 module.exports = router;
