@@ -144,7 +144,7 @@ let persons= [
  
  router.post("/post-api", function(req,res){
     let canVote = req.query.votingAge
-    let result =  persons.filter(guy => guy.age >= canVote )
+    let result = persons.filter(guy => guy.age >= canVote )
     for(let i=0 ; i < result.length ;i++){
     if(result){
         result[i].votingStatus = true
