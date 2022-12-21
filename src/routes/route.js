@@ -77,8 +77,8 @@ router.get("/authorname", async function(req,res){
     // to change the price of the book of two states
     let price = await bookModel3.findOneAndUpdate(
         {name:"Two states"},
-        {$set : {price : 100}},
-        {new : true}
+        {$set : {price : 125}},
+        // {new : true}
     ).select({_id : 0, price : 1})
     console.log(price)
     res.send({msg : author, new : price})
