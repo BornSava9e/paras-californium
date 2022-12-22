@@ -10,4 +10,4 @@ const authorSchema1 = new mongoose.Schema({
     rating : Number
 })
 
-module.exports = mongoose.Model("Writers", authorSchema1 )
+module.exports = mongoose.model('Writers', authorSchema1 )

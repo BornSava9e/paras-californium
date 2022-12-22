@@ -7,4 +7,4 @@ const publisherSchema1 = new mongoose.Schema({
     headQuaters : String
 })
 
-module.exports = mongoose.Model( "Publisher", publisherSchema1)
+module.exports = mongoose.model( 'Publisher', publisherSchema1)

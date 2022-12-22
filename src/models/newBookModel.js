@@ -16,7 +16,11 @@ const bookSchema1 = new mongoose.Schema({
         ref : "Publisher",
         required : true,
         unique : true
+    },
+    isHardCover : {
+        type : Boolean,
+        default: false
     }
-})
+},{timestamps:true})
 
-module.exports = mongoose.model("BooksLibrary", bookSchema1)
+module.exports = mongoose.model('BooksLibrary', bookSchema1)
