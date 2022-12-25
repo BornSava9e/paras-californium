@@ -10,7 +10,8 @@ const SchemaUser = new mongoose.Schema({
         enum : ["male","female","other"]
         },
     isFreeAppUser :{
-        type : Boolean
+        type : Boolean,
+        default : true
          }
 },{timestamps : true})
 
