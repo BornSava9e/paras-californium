@@ -56,10 +56,12 @@ router.get("/person/:personId",checkToken.condition1, route.route1)
 
 //4 put api to update the user details
 
-router.put("/users/:userId", checkToken.condition1 ,checkToken.condition2, route.route2)
+router.put("/users/:personId", checkToken.condition1 ,checkToken.condition2, route.route2)
 
 //5 Delete api 
 
-router.delete("/user/:userId", checkToken.condition1 ,checkToken.condition2, route.route3)
+router.delete("/user/:personId", checkToken.condition1 ,checkToken.condition2, route.route3)
+
+
 
 module.exports = router;

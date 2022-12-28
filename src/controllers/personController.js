@@ -1,6 +1,7 @@
 const personModel= require("../models/personModel")
 const checkToken = require("../middlewares/auth")
 const jwt = require("jsonwebtoken")
+const router = require("../routes/route")
 
 //3 check personId and jwt token is correct or not
 const route1 = async function(req,res){
@@ -19,7 +20,7 @@ const route1 = async function(req,res){
 }
 //4 put api to update the user details
 const route2 = async function(req,res){
-    const userid = req.params.userId
+    const userid = req.params.personId
     const token = req.headers["x-auth-token"]
 
     const verifyToken = jwt.verify(token, "secretkey001")
@@ -37,7 +38,7 @@ const route2 = async function(req,res){
 }
 //5 Delete api
 const route3 = async function(req, res){
-    const userid = req.params.userId
+    const userid = req.params.personId
     const token = req.headers["x-auth-token"]
 
     const verifyToken = jwt.verify(token, "secretkey001")
@@ -53,6 +54,8 @@ const route3 = async function(req, res){
         res.send({status : false , msg : "unable to find the person"})
     }
 }
+
+
 module.exports.route1 = route1 ;
 module.exports.route2 = route2 ;
 module.exports.route3 = route3 ;
