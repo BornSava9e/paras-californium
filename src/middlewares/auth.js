@@ -14,6 +14,7 @@ const condition1 = async function(req,res,next){
 
 // api to check the authorization of person
 const condition2 = async function (req,res, next){
+    try{
     const personId = req.params.personId        // getting personId in personId variable
     const token = req.headers["x-auth-token"]   // getting jwt token in token variable
     
@@ -23,6 +24,9 @@ const condition2 = async function (req,res, next){
         next() 
     }else{
         res.send({ status : false , msg : "user id is not authorized"})
+    }
+    }catch(error){
+        res.status(500).send({msg : "error", error: error.message })
     } 
 }
 module.exports.condition1 = condition1

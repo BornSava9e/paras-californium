@@ -23,14 +23,20 @@ const mongoose = require("mongoose")
 const personModel= require("../models/personModel")
 
 router.post("/register", async function(req, res){
+    try{
     const body = req.body
     const person = await personModel.create(body)
-    res.send({status :true ,user : person})
+    res.status(201).send({status :true ,user : person})
+    
+    }catch(error){
+        res.status(500).send({msg : "error" , problem : error.message})
+    }
 })
 
 // 2 api login
 const jwt = require("jsonwebtoken")
 router.post("/login", async function(req,res){
+try{
     const emailId = req.body.email          // get email from postman body
     const userpassword = req.body.password  // get password from postman body
 
@@ -38,13 +44,16 @@ router.post("/login", async function(req,res){
     const person = await personModel.findOne({email : emailId, password : userpassword})    
 
     if(!person){
-        res.send({status : false, msg : "email or password is incorrect"})
-    }{
+        res.status(401).send({status : false, msg : "email or password is incorrect"})
+    }else{
         // if credentials are correct so create a token with the help of JWT 
         const token = jwt.sign({objId : person._id , name : person.firstName}, "secretkey001")
         console.log(token)
-        res.send({status : true, Data : token})
+        res.status(201).send({status : true, Data : token})
     }
+}catch(error){
+    res.status(500).send({msg : "error" , problem : error.message})
+}
 })
 
 //3 check personId and jwt token is correct or not
