@@ -199,15 +199,15 @@ const deleteBlogs1 = async function (req, res) {
                   return res.status(400).send({ status: false, error: "document already deleted" })
             }
 
-            if(blog.authorId !== req.authorId){
-                  res.status(401).send({status:false ,msg :"you are not authorised"})
-            }
+            // if(blog._id !== req.authorId){
+            //       res.status(401).send({status:false ,msg :"you are not authorised"})
+            // }
 
 
-            updatedData = await BlogModel.findOneAndUpdate({ _id: blogId },
+            let updatedData = await BlogModel.findOneAndUpdate({ _id: blogId },
                   { $set: { isDeleted: true, deletedAt: Date.now() } }, { new: true })
 
-            return res.status(200).send({ status: true, msg: "daleted successfully", data: updatedData })
+            return res.status(200).send({ status: true, msg: "deleted successfully", data: updatedData })
 
       }
       catch (err) {
@@ -254,6 +254,7 @@ const deleteBlogs2 = async (req, res) => {
                   }
                    
             }
+
             return res.status(404).send({ status: false, msg: "no data is found to be deleted" })
       }
       catch (err) {
