@@ -8,11 +8,11 @@ const {promisify}=require("util")
 
 //1. Connect to the redis server
 const redisClient = redis.createClient(
-    18308,
-    "redis-18308.c301.ap-south-1-1.ec2.cloud.redislabs.com",
+  13041,
+    "redis-13041.c305.ap-south-1-1.ec2.cloud.redislabs.com",
     { no_ready_check: true }
   );
-  redisClient.auth("d1e6oJqtckL0m03dhEuBs4kTMhF55qba", function (err) {
+  redisClient.auth("MruTEgf5eCvooUIFLaeehlEUFbEGlUrB", function (err) {
     if (err) throw err;
   });
   
@@ -56,7 +56,7 @@ const createurl=async function(req,res){
     if (redisdata) {
        redisdata = JSON.parse(redisdata);
        console.log(redisdata)
-       return res.status(200).send({data:{longUrl:redisdata.longUrl, shortUrl:redisdata.shortUrl,urlCode:redisdata.urlCode}});
+       return res.status(200).send({status : true,data:{longUrl:redisdata.longUrl, shortUrl:redisdata.shortUrl,urlCode:redisdata.urlCode}});
     } 
     //-----------if data got expired then db  call-------------------------------------------
     else {
