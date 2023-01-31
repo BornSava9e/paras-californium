@@ -40,6 +40,9 @@ const bookSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    bookCover:{
+        type:String
+    },
     deletedAt: {
         type: Date,
     },
