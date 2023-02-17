@@ -1,13 +1,13 @@
 const express = require('express')
 const route = require('./route/route')
 const mongoose = require('mongoose')
-const cors = require('cors')
+
 const multer= require("multer")
 
 
 const app = express()
 app.use(express.json())
-app.use(cors())
+
 app.use(multer().any())
 
 mongoose.set('strictQuery', false)
